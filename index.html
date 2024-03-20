@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Entry Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Data Entry Form</h2>
+
+<form id="dataEntryForm">
+  <label for="firstName">First Name:</label>
+  <input type="ne" id="firstName" name="firstName">
+
+  <label for="lastName">Last Name:</label>
+  <input type="ne" id="lastName" name="lastName">
+
+  <label>Gender:</label>
+  <label class="gender-label" for="male"><input type="radio" id="male" name="gender" value="Male">Male</label>
+  <label class="gender-label" for="female"><input type="radio" id="female" name="gender" value="Female">Female</label>
+
+  <label>How do you go to school?</label>
+  <label class="transportation-label" for="car"><input type="radio" id="car" name="transportation" value="Car">Car</label>
+  <label class="transportation-label" for="bus"><input type="radio" id="bus" name="transportation" value="Bus">Bus</label>
+  <label class="transportation-label" for="commute"><input type="radio" id="commute" name="transportation" value="Commute">Commute</label>
+
+  <label for="birthMonth">Month of Birth:</label>
+  <select id="birthMonth" name="birthMonth">
+    <option value="">Select month</option>
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select>
+
+  <label for="aboutMe">About Yourself:</label>
+  <textarea id="aboutMe" name="aboutMe" rows="4" cols="30"></textarea>
+
+  <div class="error" id="errorMsg"></div>
+
+  <button type="button" onclick="validateForm()">OK</button>
+  <button type="reset">Reset this form</button>
+</form>
+
+<script>
+  function validateForm() {
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var gender = document.querySelector('input[name="gender"]:checked');
+    var transportation = document.querySelector('input[name="transportation"]:checked');
+    var birthMonth = document.getElementById("birthMonth").value;
+    
+    var errorMsg = document.getElementById("errorMsg");
+    errorMsg.innerHTML = "";
+
+    if (firstName === "" || lastName === "" || !gender || !transportation || birthMonth === "") {
+      errorMsg.innerHTML = "Please fill out all fields.";
+      return false;
+    }
+
+    alert("Form submitted successfully!");
+  }
+</script>
+
+</body>
+</html>
